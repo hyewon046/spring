@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- constructor injection -->
+	<!--
+	<bean id="tv" class="springdi.model.TV">
+		<constructor-arg ref="speaker" />
+	</bean>
+	-->
+	
+	<!-- setter injection -->
+	<bean id="tv" class="springdi.model.TV">
+		<property name="speaker" ref="speaker" />
+		<property name="name" value="쌈쏭UHDTV"/>
+		<property name="parts">
+			<list value-type="java.lang.String">
+				<value>브라운관</value>
+				<value>베젤</value>
+				<value>리모콘</value>
+			</list>
+		</property>
+		<property name="colors">
+			<set value-type="java.lang.String">
+				<value>실버</value>
+				<value>블랙</value>
+				<value>화이트</value>
+			</set>
+		</property>
+		<property name="yearPrice">
+			<map>
+				<entry>
+					<key>
+						<value>2023</value>
+					</key>
+					<value>1000000</value>
+				</entry>
+				<entry>
+					<key>
+						<value>2024</value>
+					</key>
+					<value>1200000</value>
+				</entry>
+			</map>
+		</property>
+		<property name="spec">
+			<props>
+				<prop key="size">200cm X 100cm</prop>
+				<prop key="hertz">120HZ</prop>
+			</props>
+		</property>
+		
+	</bean>
+	
+	<bean id="speaker" class="springdi.model.Speaker" />
+
+</beans>
