@@ -1,0 +1,61 @@
+# 스프링AOP실습
+
+[데이터베이스]
+1. 오라클에 springaopex/springaopex 계정 생성
+CREATE USER SPRINGAOPEX IDENTIFIED BY SPRINGAOPEX;
+GRANT CONNECT, RESOURCE TO SPRINGAOPEX;
+2. 테이블 생성
+CREATE TABLE SPRINGAOPEX (
+	SID NUMBER PRIMARY KEY,
+	SPASS VARCHAR2(200)
+);
+CREATE TABLE LOG (
+	LID NUMBER PRIMARY KEY,
+	LSID NUMBER,
+	LSPASS_BEFORE VARCHAR2(200),
+	LSPASS_AFTER VARCHAR2(200),	
+	LSORT VARCHAR2(20), -- "INSERT" 또는 "UPDATE" 또는 "DELETE"
+	LREGDATE TIMESTAMP
+);
+3. 시퀀스 생성
+CREATE SEQUENCE SEQ_SPRINGAOPEX;
+CREATE SEQUENCE SEQ_LOG;
+
+[자바 패키지]
+- springaopex.conf : applicationContext.xml
+- springaopex.service : SpringaopexService.java, SpringaopexServiceImpl.java 
+- springaopex.dao : SpringaopexDao.java, SpringaopexDaoImpl.java
+- springaopex.model : Springaopex.java
+- springaopex.advice : SpringaopexAdvice.java
+- springaopex.prop : db.properties
+- springaopex.test : Test.java
+
+[라이브러리]
+- 스프링 : sping-core, sping-beans, sping-context, sping-aop, sping-test, spring-jdbc
+- 외부 : ojdbc6, HikariCP, aspectjrt, aspectjweaver, junit4, log4sql, log4j
+
+[실습]
+- 리스트조회, 한건조회, 등록, 수정, 삭제 기능 구현
+- 등록하기 전에 로그테이블에 로그정보 등록 (Before 어드바이스)
+- 수정/삭제 후에 로그테이블에 로그정보 등록  (Around 어드바이스)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
